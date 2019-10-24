@@ -17,19 +17,6 @@ app.set('views',__dirname + '/view');
 app.use(express.static(__dirname + '/js'));
 app.set('view engine', 'ejs');
 app.engine('html', require('ejs').renderFile);
- if ('serviceWorker' in navigator && 'SyncManager' in window) {
-          navigator.serviceWorker.register('/sw.js');
-          navigator.serviceWorker.ready.then(function (swRegistration) {
-              return swRegistration.sync.register('myFirstSyns');
-          }).catch(function (reason) {
-            //  postDataFromThePage();
-              alert('service worker dont work because OS restriction')
-
-          });
-      } else {
-          // postDataFromThePage();
-          alert('service worker dont support')
-      }
 
 
 app.get('/',function(req,res){
